@@ -29,19 +29,6 @@ function getRandomIntInclusive(min, max) {
       el.innerText = item.name;
       listEl.appendChild(el);
     });
-    /*
-        ## JS and HTML Injection
-          There are a bunch of methods to inject text or HTML into a document using JS
-          Mainly, they're considered "unsafe" because they can spoof a page pretty easily
-          But they're useful for starting to understand how websites work
-          the usual ones are element.innerText and element.innerHTML
-          Here's an article on the differences if you want to know more:
-          https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent#differences_from_innertext
-        ## What to do in this function
-          - Accept a list of restaurant objects
-          - using a .forEach method, inject a list element into your index.html for every element in the list
-          - Display the name of that restaurant and what category of food it is
-      */
   }
   
   function filterList(array, filterInputValue) {
@@ -76,6 +63,16 @@ function getRandomIntInclusive(min, max) {
           - Return only their name, category, and location
           - Return the new list of 15 restaurants so we can work on it separately in the HTML injector
         */
+  }
+
+  async function getData() {
+    const url = 'https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json'; // remote URL! you can test it in your browser
+    const data = await fetch(url); // We're using a library that mimics a browser 'fetch' for simplicity
+    const json = await data.json(); // the data isn't json until we access it using dot notation
+
+    const reply = json.filter((item) => Boolean(item.location_1)).filter((item) => Boolean(item.street_address));
+
+    return reply;
   }
   
   function initMap() {
@@ -154,15 +151,9 @@ function getRandomIntInclusive(min, max) {
 
     initChart(chartTarget);
   
+    const results = await getData();
     /*
-          Let's get some data from the API - it will take a second or two to load
-          This next line goes to the request for 'GET' in the file at /server/routes/foodServiceRoutes.js
-          It's at about line 27 - go have a look and see what we're retrieving and sending back.
-         */
-    const results = await fetch('/api/foodServicePG');
-    const arrayFromJson = await results.json(); // here is where we get the data from our request as JSON
-  
-    /*
+    
           Below this comment, we log out a table of all the results using "dot notation"
           An alternate notation would be "bracket notation" - arrayFromJson["data"]
           Dot notation is preferred in JS unless you have a good reason to use brackets
@@ -172,13 +163,13 @@ function getRandomIntInclusive(min, max) {
   
     // in your browser console, try expanding this object to see what fields are available to work with
     // for example: arrayFromJson.data[0].name, etc
-    console.log(arrayFromJson.data[0]);
+    console.log(results[0]);
   
     // this is called "string interpolation" and is how we build large text blocks with variables
-    console.log(`${arrayFromJson.data[0].name} ${arrayFromJson.data[0].category}`);
+    console.log(`${results[0].object_id} ${results[0].street_address}`);
   
     // This IF statement ensures we can't do anything if we don't have information yet
-    if (arrayFromJson.data?.length > 0) { // the question mark in this means "if this is set at all"
+    if (results?.length > 0) { // the question mark in this means "if this is set at all"
       submit.style.display = 'block'; // let's turn the submit button back on by setting it to display as a block when we have data available
   
       loadAnimation.classList.remove('lds-ellipsis');
@@ -200,7 +191,7 @@ function getRandomIntInclusive(min, max) {
         submitEvent.preventDefault();
   
         // This constant will have the value of your 15-restaurant collection when it processes
-        currentList = processRestaurants(arrayFromJson.data);
+        currentList = processRestaurants(results);
         console.log(currentList);
   
         // And this function call will perform the "side effect" of injecting the HTML list for you
