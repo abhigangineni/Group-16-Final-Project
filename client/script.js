@@ -102,28 +102,51 @@ function getRandomIntInclusive(min, max) {
     });
   }
 
-  function initChart(chart) {
-    const labels = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-    ];
+  function shapeData(array) {
+    return array.reduce((collection, item) => {
+        if(!collection[item.posted_speed]) {
+            collection[item.posted_speed] = [item];
+        } else {
+            collection[item.posted_speed].push(item);
+        }
+        return collection;
+    }, {});
+  }
+
+  function initChart(chart, object) {
+    const labels = Object.keys(object);
+
+    const info = Object.keys(object).map((item) => object[item].length);
   
     const data = {
       labels: labels,
       datasets: [{
-        label: 'My First dataset',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
-        data: [0, 10, 5, 2, 20, 30, 45],
+        label: 'Number of Speeding Cameras per Posted Speed Limit',
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.4)',
+          'rgba(255, 159, 64, 0.4)',
+          'rgba(255, 205, 86, 0.4)',
+          'rgba(75, 192, 192, 0.4)',
+          'rgba(54, 162, 235, 0.4)',
+          'rgba(153, 102, 255, 0.4)',
+          'rgba(201, 203, 207, 0.4)'
+        ],
+        borderColor: [
+          'rgb(255, 99, 132)',
+          'rgb(255, 159, 64)',
+          'rgb(255, 205, 86)',
+          'rgb(75, 192, 192)',
+          'rgb(54, 162, 235)',
+          'rgb(153, 102, 255)',
+          'rgb(201, 203, 207)'
+        ],
+        borderWidth: 1,
+        data: info,
       }]
     };
   
     const config = {
-      type: 'line',
+      type: 'bar',
       data: data,
       options: {}
     };
@@ -148,10 +171,11 @@ function getRandomIntInclusive(min, max) {
     const loadAnimation = document.querySelector('.lds-ellipsis');
     const chartTarget = document.querySelector('#myChart');
     submit.style.display = 'none'; // let your submit button disappear
-
-    initChart(chartTarget);
   
     const results = await getData();
+
+    const shapedData = shapeData(results);
+    initChart(chartTarget, shapedData);
     /*
     
           Below this comment, we log out a table of all the results using "dot notation"
