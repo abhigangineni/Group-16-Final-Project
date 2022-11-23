@@ -3,11 +3,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Group Project Base</title>
+    <title>INST377 Group 16 Final Project</title>
+    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+    integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+    crossorigin=""/> -->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+     integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+     crossorigin=""></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <h1>We are Group 16 - Hello World</h1>
+    <div class="wrapper">
+        <header class="header">
+            <h1 class="header h1">CameraAway - 100% Reliable Speeding Camera Detector</h1>
+        </header>
+        <div class="container">
+            <div class="left_section box">
+                <h3>Filter:</h3>
+                <form action="/api" class="box main_form">
+                    <div>
+                        <label for="resto">Enter Street Address</label>
+                        <input type="text" name="resto" id="resto">
+                    </div>
+                    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                    <button type="submit" id="get-resto">Submit</button>
+                </form>
+            </div>
+            <div class="right_section box">
+                <h2>Local Camera Map</h2>
+                <!-- <div id="map"></div> -->
+                <div class="chart_container">
+                    <canvas id="myChart"></canvas>
+                </div>
+                <div class="box" id="restaurant_list">
+                    Speeding Cameras in Prince George's County
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="./script.js"></script>
 </body>
 </html>
