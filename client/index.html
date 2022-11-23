@@ -3,52 +3,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sai Gangineni's Labs for INST377</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+    <title>INST377 Group 16 Final Project</title>
+    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
     integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
-    crossorigin=""/>
+    crossorigin=""/> -->
     <link rel="stylesheet" href="style.css">
 
-    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+    <!-- <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
      integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
-     crossorigin=""></script>
+     crossorigin=""></script> -->
 </head>
 <body>
     <div class="wrapper">
         <header class="header">
-            <h1 class="header h1">Sai Gangineni's Labs for INST377</h1>
+            <h1 class="header h1">CameraAway - 100% Reliable Speeding Camera Detector</h1>
         </header>
         <div class="container">
             <div class="left_section box">
-                <h3>Form Inputs</h3>
+                <h3>Filter:</h3>
                 <form action="/api" class="box main_form">
                     <div>
-                        <label for="resto">Filter Restaurant List</label>
+                        <label for="resto">Enter Street Address</label>
                         <input type="text" name="resto" id="resto">
                     </div>
                     <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-                    <button type="submit" id="get-resto">Change Restaurant</button>
+                    <button type="submit" id="get-resto">Submit</button>
                 </form>
             </div>
             <div class="right_section box">
-                <h2>Local Restaurant Map</h2>
-                <div id="map"></div>
+                <h2>Local Camera Map</h2>
+                <!-- <div id="map"></div> -->
                 <div class="box" id="restaurant_list">
-                    A list of restaurants from an API
+                    Speeding Cameras in Prince George's County
                 </div>
             </div>
         </div>
     </div>
-    <footer class="footer">
-        GitHub Account:
-        <a
-          class="footer a"
-          href="https://github.com/abhigangineni"
-          target="_blank"
-          rel="noopener noreferrer"
-          >abhigangineni</a
-        >
-      </footer>
-      <script src="./script.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
