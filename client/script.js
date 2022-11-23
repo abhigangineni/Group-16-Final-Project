@@ -104,6 +104,38 @@ function getRandomIntInclusive(min, max) {
       }
     });
   }
+
+  function initChart(chart) {
+    const labels = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+    ];
+  
+    const data = {
+      labels: labels,
+      datasets: [{
+        label: 'My First dataset',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [0, 10, 5, 2, 20, 30, 45],
+      }]
+    };
+  
+    const config = {
+      type: 'line',
+      data: data,
+      options: {}
+    };
+
+    return new Chart(
+      chart,
+      config
+    );
+  }
   
   async function mainEvent() {
     /*
@@ -117,7 +149,10 @@ function getRandomIntInclusive(min, max) {
     const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
     const submit = document.querySelector('#get-resto'); // get a reference to your submit button
     const loadAnimation = document.querySelector('.lds-ellipsis');
+    const chartTarget = document.querySelector('#myChart');
     submit.style.display = 'none'; // let your submit button disappear
+
+    initChart(chartTarget);
   
     /*
           Let's get some data from the API - it will take a second or two to load

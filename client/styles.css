@@ -315,6 +315,12 @@ Form Styles
   margin-bottom: 1rem;
 }
 
+.chart_container {
+  background-color: white;
+  height: 100%;
+  width: 100%;
+}
+
 
 /* How To Write A Media Query For Small Screens */
 
