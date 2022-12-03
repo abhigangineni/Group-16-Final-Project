@@ -26,16 +26,16 @@ function getRandomIntInclusive(min, max) {
     target.appendChild(listEl);
     list.forEach((item) => {
       const el = document.createElement('li');
-      el.innerText = item.name;
+      el.innerText = item["street_address"]+" -> Posted Speed: "+ item["posted_speed"];
       listEl.appendChild(el);
     });
   }
   
   function filterList(array, filterInputValue) {
     const newArray = array.filter((item) => {
-      const lowercaseName = item.name.toLowerCase();
+      const lowercaseAddress = item.street_address.toLowerCase();
       const lowercaseQuery = filterInputValue.toLowerCase();
-      return lowercaseName.includes(lowercaseQuery);
+      return lowercaseAddress.includes(lowercaseQuery);
     });
     return newArray;
   }
@@ -94,10 +94,12 @@ function getRandomIntInclusive(min, max) {
     });
   
     array.forEach((item, index) => {
-      const {coordinates} = item.geocoded_column_1;
-      L.marker([coordinates[1], coordinates[0]]).addTo(map);
+      const {latitude} = item.location_1;
+      const {longitude} = item.location_1;
+      console.log(latitude,longitude);
+      L.marker([Number(latitude), Number(longitude)]).addTo(map);
       if (index === 0) {
-        map.setView([coordinates[1], coordinates[0]], 9.5);
+        map.setView([Number(latitude), Number(longitude)], 9.5);
       }
     });
   }
@@ -111,7 +113,7 @@ function getRandomIntInclusive(min, max) {
         }
         return collection;
     }, {});
-  }
+  } 
 
   function initChart(chart, object) {
     const labels = Object.keys(object);
@@ -164,18 +166,19 @@ function getRandomIntInclusive(min, max) {
             When you're not working in a heavily-commented "learning" file, this also is more legible
             If you separate your work, when one piece is complete, you can save it and trust it
         */
-    // const pageMap = initMap();
+    
     // the async keyword means we can make API requests
     const form = document.querySelector('.main_form'); // get your main form so you can do JS with it
     const submit = document.querySelector('#get-resto'); // get a reference to your submit button
     const loadAnimation = document.querySelector('.lds-ellipsis');
-    const chartTarget = document.querySelector('#myChart');
+    //const chartTarget = document.querySelector('#myChart');
     submit.style.display = 'none'; // let your submit button disappear
   
     const results = await getData();
 
-    const shapedData = shapeData(results);
-    initChart(chartTarget, shapedData);
+    //const shapedData = shapeData(results);
+    //initChart(chartTarget, shapedData);
+    const pageMap = initMap();
     /*
     
           Below this comment, we log out a table of all the results using "dot notation"
@@ -205,7 +208,7 @@ function getRandomIntInclusive(min, max) {
         console.log('input', event.target.value);
         const filteredList = filterList(currentList, event.target.value);
         injectHTML(filteredList);
-        // markerPlace(filteredList, pageMap);
+        markerPlace(filteredList, pageMap);
       });
   
       // And here's an eventListener! It's listening for a "submit" button specifically being clicked
@@ -220,7 +223,7 @@ function getRandomIntInclusive(min, max) {
   
         // And this function call will perform the "side effect" of injecting the HTML list for you
         injectHTML(currentList);
-        // markerPlace(currentList, pageMap);
+        markerPlace(currentList, pageMap);
   
         // By separating the functions, we open the possibility of regenerating the list
         // without having to retrieve fresh data every time
