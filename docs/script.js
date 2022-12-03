@@ -104,60 +104,60 @@ function getRandomIntInclusive(min, max) {
     });
   }
 
-  function shapeData(array) {
-    return array.reduce((collection, item) => {
-        if(!collection[item.posted_speed]) {
-            collection[item.posted_speed] = [item];
-        } else {
-            collection[item.posted_speed].push(item);
-        }
-        return collection;
-    }, {});
-  } 
+  // function shapeData(array) {
+  //   return array.reduce((collection, item) => {
+  //       if(!collection[item.posted_speed]) {
+  //           collection[item.posted_speed] = [item];
+  //       } else {
+  //           collection[item.posted_speed].push(item);
+  //       }
+  //       return collection;
+  //   }, {});
+  // } 
 
-  function initChart(chart, object) {
-    const labels = Object.keys(object);
+  // function initChart(chart, object) {
+  //   const labels = Object.keys(object);
 
-    const info = Object.keys(object).map((item) => object[item].length);
+  //   const info = Object.keys(object).map((item) => object[item].length);
   
-    const data = {
-      labels: labels,
-      datasets: [{
-        label: 'Number of Speeding Cameras per Posted Speed Limit',
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.4)',
-          'rgba(255, 159, 64, 0.4)',
-          'rgba(255, 205, 86, 0.4)',
-          'rgba(75, 192, 192, 0.4)',
-          'rgba(54, 162, 235, 0.4)',
-          'rgba(153, 102, 255, 0.4)',
-          'rgba(201, 203, 207, 0.4)'
-        ],
-        borderColor: [
-          'rgb(255, 99, 132)',
-          'rgb(255, 159, 64)',
-          'rgb(255, 205, 86)',
-          'rgb(75, 192, 192)',
-          'rgb(54, 162, 235)',
-          'rgb(153, 102, 255)',
-          'rgb(201, 203, 207)'
-        ],
-        borderWidth: 1,
-        data: info,
-      }]
-    };
+  //   const data = {
+  //     labels: labels,
+  //     datasets: [{
+  //       label: 'Number of Speeding Cameras per Posted Speed Limit',
+  //       backgroundColor: [
+  //         'rgba(255, 99, 132, 0.4)',
+  //         'rgba(255, 159, 64, 0.4)',
+  //         'rgba(255, 205, 86, 0.4)',
+  //         'rgba(75, 192, 192, 0.4)',
+  //         'rgba(54, 162, 235, 0.4)',
+  //         'rgba(153, 102, 255, 0.4)',
+  //         'rgba(201, 203, 207, 0.4)'
+  //       ],
+  //       borderColor: [
+  //         'rgb(255, 99, 132)',
+  //         'rgb(255, 159, 64)',
+  //         'rgb(255, 205, 86)',
+  //         'rgb(75, 192, 192)',
+  //         'rgb(54, 162, 235)',
+  //         'rgb(153, 102, 255)',
+  //         'rgb(201, 203, 207)'
+  //       ],
+  //       borderWidth: 1,
+  //       data: info,
+  //     }]
+  //   };
   
-    const config = {
-      type: 'bar',
-      data: data,
-      options: {}
-    };
+  //   const config = {
+  //     type: 'bar',
+  //     data: data,
+  //     options: {}
+  //   };
 
-    return new Chart(
-      chart,
-      config
-    );
-  }
+  //   return new Chart(
+  //     chart,
+  //     config
+  //   );
+  // }
   
   async function mainEvent() {
     /*
