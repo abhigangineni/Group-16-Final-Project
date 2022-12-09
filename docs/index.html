@@ -1,55 +1,83 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INST377 Group 16 Final Project</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
-    integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
-    crossorigin=""/>
-    <link rel="stylesheet" href="styles.css">
-
-    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
-     integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
-     crossorigin=""></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
-</head>
-<body>
-    <div class="wrapper">
-        <header class="header">
-            <h1 class="header h1">CameraAway - 100% Reliable Speeding Camera Detector</h1>
-        </header>
-        <div class="container">
-            <div class="left_section box">
-                <h3>Filter:</h3>
-                <form action="/api" class="box main_form">
-                    <div>
-                        <label for="resto">Enter Street Address</label>
-                        <input type="text" name="resto" id="resto">
-                    </div>
-                    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-                    <button type="submit" id="get-resto">Submit</button>
-                </form>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <title>INST377 Group 16 Final Project</title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+        integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+        crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+        integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+        crossorigin=""></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    </head>
+    <body>
+        <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <figure class="image is-128x128">
+                    <img src="logo.png">
+                </figure>
             </div>
-            <div class="right_section box">
-                <h2>Local Camera Map</h2>
-                <div id="map"></div>
-                <!-- <div class="chart_container">
-                    <canvas id="myChart"></canvas>
-                </div> -->
-                <div class="box" id="restaurant_list">
-                    Speeding Cameras in Prince George's County
+          
+            <div id="navbarBasicExample" class="navbar-menu">
+              <div class="navbar-start">
+                <a class="navbar-item">
+                  Home
+                </a>
+          
+                <a class="navbar-item" href="https://abhigangineni.github.io/Group-16-Final-Project/about.html">
+                  About
+                </a>
+              </div>
+
+              <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="box">
+                        <h1 class="title">
+                            <strong>CameraAway</strong>
+                        </h1>
+                        <h2 class="subtitle">
+                            <strong>100% Reliable Speeding Camera Detector</strong>
+                        </h2>
+                    </div>
+                </div>
+              </div>
+          
+              
+            </div>
+        </nav>
+        <section class="section">
+            <div class="tile is-ancestor">
+                <div class="tile is-6 is-vertical is-parent">
+                    <div class="tile is-child column">
+                        <h2 class="subtitle">Filter:</h2>
+                        <form action="/api" class="box main_form">
+                            <div class="field">
+                                <label class="label" for="resto">Enter Street Address</label>
+                                <div class="control">
+                                    <input class="input" type="text" name="resto" id="resto" placeholder="e.g. 5200 Marlboro Pike">
+                                </div>
+                            </div>
+                            <button class="button is-primary" type="submit" id="get-resto">Submit</button>
+                        </form>
+                    </div>
+                    <div class="tile is-child content" id="camera_list">
+                        Speeding Cameras in Prince George's County
+                    </div>
+                </div>
+                <div class="tile is-6 is-parent column">
+                    <div class="tile is-child">
+                        <div class="tile is-child block">
+                            <h2 class="subtitle">Local Camera Map</h2>
+                            <div class="box" style="height:25em; width:25em">
+                                <div class="map" id="map" style="height:100%; width:100%;"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <footer class="footer">
-        <a
-          class="footer a"
-          href="https://abhigangineni.github.io/Group-16-Final-Project/about.html"
-          >About Page</a
-        >
-      </footer>
-    <script src="./script.js"></script>
-</body>
+        </section>
+        <script src="./script.js"></script>
+    </body>
 </html>

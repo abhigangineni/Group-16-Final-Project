@@ -1,43 +1,79 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INST377 Group 16 Final Project</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="wrapper">
-        <header class="header">
-            <h1 class="header h1">About:</h1>
-        </header>
-        <div class="container">
-            <div class="left_section box">
-                <h3>Group Members:</h3>
-                <p>
-                    Sai Gangineni
-                    Biruk Tamiru
-                </p>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <title>INST377 Group 16 Final Project</title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+        integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+        crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+        integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+        crossorigin=""></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    </head>
+    <body>
+        <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <figure class="image is-128x128">
+                    <img src="logo.png">
+                </figure>
             </div>
-            <div class="right_section box">
-                <h2>What is this Project?</h2>
-                <p>
-                    This is a speeding camera detector that
-                    can access information about all speeding
-                    cameras in Prince George's County and allows
-                    for users to filter through based on street
-                    address thereby preventing them from ever being
-                    ticketed again.
-                </p>
+          
+            <div id="navbarBasicExample" class="navbar-menu">
+              <div class="navbar-start">
+                <a class="navbar-item" href="https://abhigangineni.github.io/Group-16-Final-Project">
+                  Home
+                </a>
+          
+                <a class="navbar-item">
+                  About
+                </a>
+              </div>
+
+              <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="box">
+                        <h1 class="title">
+                            <strong>CameraAway</strong>
+                        </h1>
+                        <h2 class="subtitle">
+                            <strong>100% Reliable Speeding Camera Detector</strong>
+                        </h2>
+                    </div>
+                </div>
+              </div>
+          
+              
             </div>
-        </div>
-    </div>
-    <footer class="footer">
-        <a
-          class="footer a"
-          href="https://abhigangineni.github.io/Group-16-Final-Project"
-          >Main Page</a
-        >
-      </footer>   
-</body>
+        </nav>
+        <section class="section">
+            <div class="tile is-ancestor">
+                <div class="tile is-6 is-parent">
+                    <div class="tile is-child column">
+                        <h1 class="title">
+                            <strong>Group Members:</strong>
+                        </h1>
+                        <h1><strong>Sai Gangineni</strong></h1>
+                        <h1><strong>Biruk Tamiru</strong></h1>
+                    </div>
+                </div>
+                <div class="tile is-6 is-parent">
+                    <div class="tile is-child column">
+                        <h1 class="title">
+                            <strong>What is this Project?</strong>
+                        </h1>
+                        <p class="subtitle">
+                            This is a speeding camera detector that
+                            can access information about all speeding
+                            cameras in Prince George's County and allows
+                            for users to filter through based on street
+                            address thereby preventing them from ever being
+                            ticketed again.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
 </html>
