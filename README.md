@@ -1,6 +1,25 @@
-# This is your readme
-You are required to fill it in with documentation similar to that found in the Sequelize example for the course as part of your final project.
+# CameraAway - A 100% Reliable Speeding Camera Detector
 
-### How to use Markdown
-Markdown is a text notation system used in Discord, Whatsapp and similar to structure pages without writing HTML at all. You'll be using it for your documentation.
-* [Markdown guide](https://www.markdownguide.org/cheat-sheet/)
+## INST377 Final Project by Sai Gangineni & Biruk Tamiru
+
+Link to GitHub Pages Website: [CameraAway](https://abhigangineni.github.io/Group-16-Final-Project/)
+
+## Target Browsers
+
+Best displayed on Mac and Windows Desktop Browsers. It is responsive to mobile browsers too, however the navbar stops displaying buttons.
+
+## Project Description
+
+Project API: [Prince George's County Open Data](https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json)
+
+### Project Goal
+
+We want to use this project to help drivers get an awareness of where speeding cameras are located, at least within Prince George’s County. Although navigation apps like Google Maps and Waze provide indications of cameras, those are dependent on crowdsourcing whereas the dataset we chose is provided directly by the Prince George’s County police department making it much more reliable.
+
+### Visualizations
+
+- Leaflet.js - Used the open-source Leaflet.js Library to create a Map visualization for our project which would display the filtered list of speeding cameras with clear markers
+
+### CSS Frameworks
+
+- Bulma.css - Used the open-source Bulma.css Stylesheet to create a visually-appealing interface for our website and replaced our original style.css completely with better design and smoother navigation
