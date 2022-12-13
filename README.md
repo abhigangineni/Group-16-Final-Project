@@ -10,7 +10,7 @@ Best displayed on Mac and Windows Desktop Browsers. It is responsive to mobile b
 
 ## Project Description
 
-Project API: [Prince George's County Open Data](https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json)
+Project API: [Prince George's County Speeding Cameras](https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json)
 
 ### Project Goal
 
